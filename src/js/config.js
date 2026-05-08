@@ -1,11 +1,11 @@
 export default {
-  name:"INTANNADIA", // actual name of the recipient (Mandatory)
+  name:"INTANNADIA",  // actual name of the recipient (Mandatory)
 
-  nickname:"INTAN", // nickname(optional)
+  nickname:"INTAN",  // nickname(optional)
 
-  pic: "./local/intan.jpg", // image url of recipients (Mandatory)
+  pic: "./local/intan.jpg",  // image url of recipients (Mandatory)
 
-  showScrollMsg: true, // set to false if you do not want the scrolling message
+  showScrollMsg: true,  // set to false if you do not want the scrolling message
 
-  birthDate: "2026-05-17", // Mention birthday date in YYYY-MM-DD format
+  birthDate: "2026-05-17",  // Mention birthday date in YYYY-MM-DD format
 };
