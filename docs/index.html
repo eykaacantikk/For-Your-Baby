@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>For Intan Nadia 💜</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -32,33 +33,43 @@ canvas{
 #msg{
     position:absolute;
     z-index:20;
-    color:#d580ff;
-    font-size:32px;
+
+    top:12%;
+
+    color:#f2b6ff;
+
+    font-size:34px;
     font-weight:bold;
+
     text-align:center;
+
+    padding:15px 30px;
+
+    border-radius:20px;
+
+    backdrop-filter:blur(5px);
+
+    background:rgba(20,0,30,0.35);
+
+    border:1px solid rgba(255,255,255,0.15);
+
     text-shadow:
-        0 0 10px #c800ff,
-        0 0 20px #c800ff,
+        0 0 10px #d400ff,
+        0 0 20px #d400ff,
         0 0 40px #8a2be2;
-    animation: glow 2s infinite alternate;
+
+    box-shadow:
+        0 0 20px rgba(212,0,255,.4);
+
+    transition:1s;
 }
 
-@keyframes glow{
-    from{
-        opacity:.8;
-        transform:scale(1);
-    }
-    to{
-        opacity:1;
-        transform:scale(1.05);
-    }
-}
 </style>
 </head>
 
 <body>
 
-<div id="msg">Happy Birthday Intan Nadia 💜</div>
+<div id="msg"></div>
 
 <canvas id="matrix"></canvas>
 <canvas id="particleCanvas"></canvas>
@@ -69,9 +80,10 @@ canvas{
 </audio>
 
 <script>
-/* =========================
-   CANVAS SETUP
-========================= */
+
+// =========================
+// CANVAS SETUP
+// =========================
 
 const matrixCanvas = document.getElementById("matrix");
 const particleCanvas = document.getElementById("particleCanvas");
@@ -81,7 +93,10 @@ const mtx = matrixCanvas.getContext("2d");
 const ptx = particleCanvas.getContext("2d");
 const ftx = fireworksCanvas.getContext("2d");
 
+const msg = document.getElementById("msg");
+
 function resizeCanvas(){
+
     matrixCanvas.width =
     particleCanvas.width =
     fireworksCanvas.width = window.innerWidth;
@@ -92,11 +107,48 @@ function resizeCanvas(){
 }
 
 resizeCanvas();
+
 window.addEventListener("resize", resizeCanvas);
 
-/* =========================
-   PURPLE MATRIX RAIN
-========================= */
+// =========================
+// UCAPAN BERGERAK
+// =========================
+
+const ucapan = [
+    "Happy Birthday Intan Nadia 🎂",
+    "19 Years Old 💜",
+    "Jaga Diri Elok-Elok ✨",
+    "I Love Youu Bocahhh 🤍"
+];
+
+let currentText = 0;
+
+function tukarUcapan(){
+
+    msg.style.opacity = 0;
+
+    setTimeout(() => {
+
+        msg.innerHTML = ucapan[currentText];
+
+        msg.style.opacity = 1;
+
+        currentText++;
+
+        if(currentText >= ucapan.length){
+            currentText = 0;
+        }
+
+    }, 800);
+}
+
+tukarUcapan();
+
+setInterval(tukarUcapan, 3500);
+
+// =========================
+// PURPLE MATRIX RAIN
+// =========================
 
 const letters =
 "INTANNADIALOVE0123456789💜✨";
@@ -144,9 +196,9 @@ function drawMatrix(){
 
 drawMatrix();
 
-/* =========================
-   PARTICLE TEXT
-========================= */
+// =========================
+// PARTICLE TEXT
+// =========================
 
 const particles = [];
 
@@ -246,9 +298,9 @@ function animateParticles(){
 
 animateParticles();
 
-/* =========================
-   FIREWORKS
-========================= */
+// =========================
+// FIREWORKS
+// =========================
 
 const fireworks = [];
 
@@ -257,6 +309,7 @@ function random(min,max){
 }
 
 class Firework{
+
     constructor(){
 
         this.x = random(100, fireworksCanvas.width-100);
@@ -374,9 +427,9 @@ function animateFireworks(){
 
 animateFireworks();
 
-/* =========================
-   MUSIC
-========================= */
+// =========================
+// MUSIC
+// =========================
 
 window.addEventListener("click",()=>{
 
@@ -385,7 +438,7 @@ window.addEventListener("click",()=>{
     .play();
 
 });
-</script>
 
+</script>
 </body>
 </html>
