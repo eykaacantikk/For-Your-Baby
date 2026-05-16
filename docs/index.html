@@ -1,86 +1,305 @@
 
-  <!DOCTYPE html>
- <html>
- <head>
-     <title>For Intan Nadia ❤️</title>
-     <style>
-         body { background-color: #000; margin: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; height: 100vh; }
-         canvas { position: absolute; left: 0; top: 0; }
-         #msg {
-             position: relative; z-index: 10; color: #ff0055; font-family: 'Courier New', Courier, monospace;
-             font-size: 24px; text-align: center; text-shadow: 0 0 15px #ff0055;
-             transition: opacity 1.5s; font-weight: bold; background: rgba(0,0,0,0.5); padding: 10px;
-         }
-     </style>
- </head>
- <body>
-     <div id="msg">Happy Birthday Intan Nadia 🎂</div>
-     <canvas id="canvas"></canvas>
-     <audio id="bgMusic" loop>
-         <source src="https://raw.githubusercontent.com/t-asabina/music/main/A-Thousand-Years.mp3" type="audio/mpeg">
-     
-     <script>
-         const canvas = document.getElementById('canvas');
-         const ctx = canvas.getContext('2d');
-         const msgDiv = document.getElementById('msg');
-         canvas.width = window.innerWidth;
-         canvas.height = window.innerHeight;
-         const katakana = "HAPPYBIRTHDAYINTANNADIA1234567890LOVE";
-         const fontSize = 16;
-         const columns = canvas.width / fontSize;
-         const drops = Array(Math.floor(columns)).fill(1);
-         const ucapan = [
-             "Happy Birthday Intan Nadia 🎂",
-             "Even kita dah tak sehaluan...",
-             "Tapi tarikh ni tetap orang ingat ✨",
-             "Jaga diri okey...",
-             "I Love You 🤍"
-         ];
-         
-         let idx = 0;
-         setInterval(() => {
-             msgDiv.style.opacity = 0;
-             setTimeout(() => {
-                 idx = (idx + 1) % ucapan.length;
-                 msgDiv.innerHTML = ucapan[idx];
-                 msgDiv.style.opacity = 1;
-             }, 1000);
-         }, 4500);
-         function isInsideHeart(x, y) {
-             // Formula jantung untuk menentukan kedudukan hujan kod
-             x = (x - canvas.width / 2) / 20;
-             y = (canvas.height / 2 - y) / 20;
-             return Math.pow(x * x + y * y - 1, 3) - x * x * y * y * y <= 0;
-         }
-         function draw() {
-             ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-             ctx.fillRect(0, 0, canvas.width, canvas.height);
-             for (let i = 0; i < drops.length; i++) {
-                 const text = katakana.charAt(Math.floor(Math.random() * katakana.length));
-                 const x = i * fontSize;
-                 const y = drops[i] * fontSize;
-                 // Jika di dalam kawasan jantung, warna jadi Merah Jambu, jika di luar warna Gelap/Kelabu
-                 if (isInsideHeart(x, y)) {
-                     ctx.fillStyle = "#ff0055"; // Warna hujan jantung
-                     ctx.shadowBlur = 10;
-                     ctx.shadowColor = "#ff0055";
-                 } else {
-                     ctx.fillStyle = "#111"; // Warna hujan latar belakang (gelap)
-                     ctx.shadowBlur = 0;
-                 }
-                 ctx.fillText(text, x, y);
-                 if (y > canvas.height && Math.random() > 0.975) {
-                     drops[i] = 0;
-                 }
-                 drops[i]++;
-             }
-             requestAnimationFrame(draw);
-         }
-         ctx.font = fontSize + "px monospace";
-         draw();
-         window.addEventListener('click', () => {
-             document.getElementById('bgMusic').play();
-         });
-     </script>
- </body>
- </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Intan Nadia ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Courier New',monospace;
+}
+
+body{
+overflow:hidden;
+background:#000;
+height:100vh;
+position:relative;
+}
+
+/* GALAXY */
+body::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at 20% 30%, #ff0055 0%, transparent 20%),
+radial-gradient(circle at 80% 20%, #7700ff 0%, transparent 25%),
+radial-gradient(circle at 70% 70%, #00ccff 0%, transparent 20%),
+radial-gradient(circle at 30% 80%, #ff0088 0%, transparent 25%);
+animation:galaxy 20s infinite alternate;
+opacity:.25;
+}
+
+@keyframes galaxy{
+0%{transform:scale(1) rotate(0deg);}
+100%{transform:scale(1.25) rotate(6deg);}
+}
+
+canvas{
+position:absolute;
+top:0;
+left:0;
+z-index:1;
+}
+
+/* CENTER */
+#center{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+z-index:20;
+}
+
+/* HEART BEAT */
+#heart{
+font-size:140px;
+color:#ff0055;
+animation:beat 1s infinite;
+text-shadow:0 0 40px #ff0055;
+}
+
+@keyframes beat{
+0%{transform:scale(1);}
+25%{transform:scale(1.15);}
+50%{transform:scale(1);}
+75%{transform:scale(1.22);}
+100%{transform:scale(1);}
+}
+
+#msg{
+font-size:34px;
+color:white;
+margin-top:20px;
+text-shadow:0 0 20px #ff0055;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 10px #ff0055;}
+to{text-shadow:0 0 35px #ff0055;}
+}
+
+#sub{
+margin-top:15px;
+font-size:18px;
+color:#ff88bb;
+}
+
+/* PARTICLE NAME */
+#name{
+position:absolute;
+bottom:70px;
+width:100%;
+text-align:center;
+font-size:95px;
+color:#ff77aa;
+text-shadow:0 0 25px #ff0055;
+z-index:15;
+animation:flicker 2s infinite alternate;
+}
+
+@keyframes flicker{
+from{opacity:.6;}
+to{opacity:1;}
+}
+
+/* HACKER PANEL */
+.panel{
+position:absolute;
+top:20px;
+left:20px;
+padding:18px;
+width:300px;
+border:1px solid #ff0055;
+background:rgba(0,0,0,.35);
+color:#ff0055;
+z-index:20;
+box-shadow:0 0 25px #ff0055;
+}
+
+.panel h2{
+margin-bottom:12px;
+}
+
+.panel p{
+margin:8px 0;
+}
+
+/* BUTTON */
+#musicBtn{
+position:absolute;
+bottom:25px;
+left:50%;
+transform:translateX(-50%);
+padding:14px 32px;
+background:#ff0055;
+border:none;
+color:white;
+font-size:18px;
+border-radius:50px;
+cursor:pointer;
+z-index:30;
+box-shadow:0 0 20px #ff0055;
+}
+
+/* FIREWORKS */
+.firework{
+position:absolute;
+width:8px;
+height:8px;
+background:#ff0055;
+border-radius:50%;
+animation:explode 1.5s linear forwards;
+z-index:5;
+}
+
+@keyframes explode{
+0%{
+transform:scale(0);
+opacity:1;
+}
+100%{
+transform:scale(18);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="panel">
+<h2>SYSTEM_STATUS</h2>
+<p>❤️ HEART.EXE : RUNNING</p>
+<p>💖 LOVE_FOR_YOU : TRUE</p>
+<p>🧠 MEMORIES : LOADED</p>
+<p>🌌 FEELINGS : UNLIMITED</p>
+</div>
+
+<div id="center">
+<div id="heart">❤️</div>
+<div id="msg">Happy Birthday Intan Nadia 🎂</div>
+<div id="sub">Even kita dah tak sehaluan... tapi orang tetap ingat ✨</div>
+</div>
+
+<div id="name">Intan Nadia</div>
+
+<button id="musicBtn">▶ PLAY MUSIC</button>
+
+<canvas id="canvas"></canvas>
+
+<audio id="bgMusic" loop>
+<source src="https://raw.githubusercontent.com/t-asabina/music/main/A-Thousand-Years.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const canvas=document.getElementById('canvas');
+const ctx=canvas.getContext('2d');
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+const letters="INTANNADIALOVE0123456789";
+const fontSize=16;
+const columns=canvas.width/fontSize;
+const drops=Array(Math.floor(columns)).fill(1);
+
+function isInsideHeart(x,y){
+x=(x-canvas.width/2)/25;
+y=(canvas.height/2-y)/25;
+return Math.pow(x*x+y*y-1,3)-x*x*y*y*y<=0;
+}
+
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.08)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.font=fontSize+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+
+const text=letters.charAt(Math.floor(Math.random()*letters.length));
+
+const x=i*fontSize;
+const y=drops[i]*fontSize;
+
+if(isInsideHeart(x,y)){
+ctx.fillStyle="#ff0055";
+ctx.shadowBlur=15;
+ctx.shadowColor="#ff0055";
+}else{
+ctx.fillStyle="#111";
+ctx.shadowBlur=0;
+}
+
+ctx.fillText(text,x,y);
+
+if(y>canvas.height&&Math.random()>0.975){
+drops[i]=0;
+}
+
+drops[i]++;
+}
+
+requestAnimationFrame(draw);
+}
+draw();
+
+/* MESSAGE LOOP */
+const messages=[
+"Happy Birthday Intan Nadia 🎂",
+"You Are The Reason Of My Smile 💖",
+"Even Kita Dah Tak Sehaluan...",
+"Tapi Tarikh Ni Tetap Orang Ingat ✨",
+"I Love You 🤍"
+];
+
+let idx=0;
+
+setInterval(()=>{
+idx=(idx+1)%messages.length;
+document.getElementById('msg').innerHTML=messages[idx];
+},4000);
+
+/* FIREWORKS */
+function firework(){
+const fw=document.createElement('div');
+fw.className='firework';
+fw.style.left=Math.random()*window.innerWidth+'px';
+fw.style.top=Math.random()*window.innerHeight+'px';
+document.body.appendChild(fw);
+
+setTimeout(()=>fw.remove(),1500);
+}
+
+setInterval(firework,250);
+
+/* MUSIC */
+const music=document.getElementById('bgMusic');
+
+document.getElementById('musicBtn').addEventListener('click',()=>{
+music.play();
+document.getElementById('musicBtn').innerHTML='💖 MUSIC PLAYING';
+});
+
+/* MOBILE AUTOPLAY WORKAROUND */
+document.body.addEventListener('touchstart',()=>{
+music.play();
+},{once:true});
+
+window.addEventListener('resize',()=>{
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+});
+</script>
+
+</body>
+</html>
