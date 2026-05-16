@@ -1,117 +1,94 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Intan Nadia ❤️</title>
+<!-- GANTI BAHAGIAN HEART LAMA -->
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Courier New',monospace;
-}
+<div id="heart">LOVE</div>
 
-body{
-overflow:hidden;
-background:#000;
-height:100vh;
-position:relative;
-}
 
-/* GALAXY */
-body::before{
-content:"";
-position:absolute;
-width:100%;
-height:100%;
-background:
-radial-gradient(circle at 20% 30%, #ff0055 0%, transparent 20%),
-radial-gradient(circle at 80% 20%, #7700ff 0%, transparent 25%),
-radial-gradient(circle at 70% 70%, #00ccff 0%, transparent 20%),
-radial-gradient(circle at 30% 80%, #ff0088 0%, transparent 25%);
-animation:galaxy 20s infinite alternate;
-opacity:.25;
-}
+<!-- GANTI CSS #heart LAMA DENGAN YANG NI -->
 
-@keyframes galaxy{
-0%{transform:scale(1) rotate(0deg);}
-100%{transform:scale(1.25) rotate(6deg);}
-}
-
-canvas{
-position:absolute;
-top:0;
-left:0;
-z-index:1;
-}
-
-/* CENTER */
-#center{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-text-align:center;
-z-index:20;
-}
-
-/* HEART BEAT */
 #heart{
 font-size:140px;
-color:#ff0055;
-animation:beat 1s infinite;
-text-shadow:0 0 40px #ff0055;
+font-weight:bold;
+
+background:linear-gradient(
+45deg,
+#ff0055,
+#ff77aa,
+#ffffff,
+#ff0055
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+text-shadow:
+0 0 10px #ff0055,
+0 0 20px #ff0055,
+0 0 40px #ff0055,
+0 0 80px #ff0055;
+
+animation:
+beat 1.2s infinite,
+rotate3d 5s infinite ease-in-out;
+
+transform-style:preserve-3d;
+perspective:1000px;
+letter-spacing:12px;
 }
 
-@keyframes beat{
-0%{transform:scale(1);}
-25%{transform:scale(1.15);}
-50%{transform:scale(1);}
-75%{transform:scale(1.22);}
-100%{transform:scale(1);}
+@keyframes rotate3d{
+
+0%{
+transform:
+rotateY(0deg)
+rotateX(0deg)
+scale(1);
 }
 
-#msg{
-font-size:34px;
-color:white;
-margin-top:20px;
-text-shadow:0 0 20px #ff0055;
-animation:glow 2s infinite alternate;
+25%{
+transform:
+rotateY(12deg)
+rotateX(5deg)
+scale(1.08);
 }
 
-@keyframes glow{
-from{text-shadow:0 0 10px #ff0055;}
-to{text-shadow:0 0 35px #ff0055;}
+50%{
+transform:
+rotateY(0deg)
+rotateX(0deg)
+scale(1);
 }
 
-#sub{
-margin-top:15px;
-font-size:18px;
-color:#ff88bb;
+75%{
+transform:
+rotateY(-12deg)
+rotateX(-5deg)
+scale(1.08);
 }
 
-/* PARTICLE NAME */
-#name{
-position:absolute;
-bottom:70px;
-width:100%;
-text-align:center;
-font-size:95px;
-color:#ff77aa;
-text-shadow:0 0 25px #ff0055;
-z-index:15;
-animation:flicker 2s infinite alternate;
+100%{
+transform:
+rotateY(0deg)
+rotateX(0deg)
+scale(1);
+}
 }
 
-@keyframes flicker{
-from{opacity:.6;}
-to{opacity:1;}
-}
 
-/* HACKER PANEL */
+/* BUANG KOTAK KIRI */
+/* DELETE SEMUA CODE NI */
+
+<div class="panel">
+<h2>SYSTEM_STATUS</h2>
+<p>❤️ HEART.EXE : RUNNING</p>
+<p>💖 LOVE_FOR_YOU : TRUE</p>
+<p>🧠 MEMORIES : LOADED</p>
+<p>🌌 FEELINGS : UNLIMITED</p>
+</div>
+
+
+/* DELETE CSS NI JUGA */
+
 .panel{
 position:absolute;
 top:20px;
@@ -133,127 +110,10 @@ margin-bottom:12px;
 margin:8px 0;
 }
 
-/* BUTTON */
-#musicBtn{
-position:absolute;
-bottom:25px;
-left:50%;
-transform:translateX(-50%);
-padding:14px 32px;
-background:#ff0055;
-border:none;
-color:white;
-font-size:18px;
-border-radius:50px;
-cursor:pointer;
-z-index:30;
-box-shadow:0 0 20px #ff0055;
-}
 
-/* FIREWORKS */
-.firework{
-position:absolute;
-width:8px;
-height:8px;
-background:#ff0055;
-border-radius:50%;
-animation:explode 1.5s linear forwards;
-z-index:5;
-}
+/* BUANG MESSAGE LOOP */
+/* DELETE SEMUA JAVASCRIPT NI */
 
-@keyframes explode{
-0%{
-transform:scale(0);
-opacity:1;
-}
-100%{
-transform:scale(18);
-opacity:0;
-}
-}
-</style>
-</head>
-
-<body>
-
-<div class="panel">
-<h2>SYSTEM_STATUS</h2>
-<p>❤️ HEART.EXE : RUNNING</p>
-<p>💖 LOVE_FOR_YOU : TRUE</p>
-<p>🧠 MEMORIES : LOADED</p>
-<p>🌌 FEELINGS : UNLIMITED</p>
-</div>
-
-<div id="center">
-<div id="heart">❤️</div>
-<div id="msg">Happy Birthday Intan Nadia 🎂</div>
-<div id="sub">Even kita dah tak sehaluan... tapi orang tetap ingat ✨</div>
-</div>
-
-<div id="name">Intan Nadia</div>
-
-<button id="musicBtn">▶ PLAY MUSIC</button>
-
-<canvas id="canvas"></canvas>
-
-<audio id="bgMusic" loop>
-<source src="https://raw.githubusercontent.com/t-asabina/music/main/A-Thousand-Years.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-const canvas=document.getElementById('canvas');
-const ctx=canvas.getContext('2d');
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-const letters="INTANNADIALOVE0123456789";
-const fontSize=16;
-const columns=canvas.width/fontSize;
-const drops=Array(Math.floor(columns)).fill(1);
-
-function isInsideHeart(x,y){
-x=(x-canvas.width/2)/25;
-y=(canvas.height/2-y)/25;
-return Math.pow(x*x+y*y-1,3)-x*x*y*y*y<=0;
-}
-
-function draw(){
-ctx.fillStyle="rgba(0,0,0,0.08)";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-ctx.font=fontSize+"px monospace";
-
-for(let i=0;i<drops.length;i++){
-
-const text=letters.charAt(Math.floor(Math.random()*letters.length));
-
-const x=i*fontSize;
-const y=drops[i]*fontSize;
-
-if(isInsideHeart(x,y)){
-ctx.fillStyle="#ff0055";
-ctx.shadowBlur=15;
-ctx.shadowColor="#ff0055";
-}else{
-ctx.fillStyle="#111";
-ctx.shadowBlur=0;
-}
-
-ctx.fillText(text,x,y);
-
-if(y>canvas.height&&Math.random()>0.975){
-drops[i]=0;
-}
-
-drops[i]++;
-}
-
-requestAnimationFrame(draw);
-}
-draw();
-
-/* MESSAGE LOOP */
 const messages=[
 "Happy Birthday Intan Nadia 🎂",
 "You Are The Reason Of My Smile 💖",
@@ -269,37 +129,18 @@ idx=(idx+1)%messages.length;
 document.getElementById('msg').innerHTML=messages[idx];
 },4000);
 
-/* FIREWORKS */
-function firework(){
-const fw=document.createElement('div');
-fw.className='firework';
-fw.style.left=Math.random()*window.innerWidth+'px';
-fw.style.top=Math.random()*window.innerHeight+'px';
-document.body.appendChild(fw);
 
-setTimeout(()=>fw.remove(),1500);
-}
+/* GANTI DENGAN AYAT STATIC NI */
 
-setInterval(firework,250);
+document.getElementById('msg').innerHTML =
+"Happy Birthday Intan Nadia 🎂";
 
-/* MUSIC */
-const music=document.getElementById('bgMusic');
+document.getElementById('sub').innerHTML =
+`
+You may not belong to me anymore,<br>
+but a part of my heart still belongs to you ✨<br><br>
 
-document.getElementById('musicBtn').addEventListener('click',()=>{
-music.play();
-document.getElementById('musicBtn').innerHTML='💖 MUSIC PLAYING';
-});
-
-/* MOBILE AUTOPLAY WORKAROUND */
-document.body.addEventListener('touchstart',()=>{
-music.play();
-},{once:true});
-
-window.addEventListener('resize',()=>{
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-});
-</script>
-
-</body>
-</html>
+Thank you for every memory,<br>
+every smile,<br>
+and every moment we once shared 🤍
+`;
