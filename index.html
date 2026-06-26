@@ -7,44 +7,44 @@
      <script src="https://cdn.tailwindcss.com"></script>
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800&display=swap" rel="stylesheet">
      <script>
          tailwind.config = {
              theme: {
                  extend: {
                      colors: {
-                         malam: '#080A1F',
-                         senja: '#12183F',
-                         lembut: '#E0E7FF',
-                         merahHati: '#FF2D55',
-                         merahGelap: '#990A29',
+                         malam: '#000000',
+                         merahNeon: '#FF2244',
+                         merahGelap: '#880011',
+                         biruMalam: '#0A1022',
                      },
                      fontFamily: {
                          lexend: ['Lexend', 'sans-serif'],
                      },
                      animation: {
-                         'denyut': 'denyut 2s ease-in-out infinite',
-                         'kilau': 'kilau 3s ease-in-out infinite',
-                         'jatuh': 'jatuh-love 4s linear infinite',
-                         'kelap': 'kelap 2s ease-in-out infinite',
+                         kilauMerah: 'kilauMerah 2.5s ease-in-out infinite',
+                         turunData: 'turunData 3s linear infinite',
+                         pantulan: 'pantulan 4s ease-in-out infinite',
+                         jatuhBintang: 'jatuhBintang 2s linear infinite',
                      },
                      keyframes: {
-                         denyut: {
-                             '0%, 100%': { transform: 'scale(1)', filter: 'drop-shadow(0 0 15px rgba(255,45,85,0.6))' },
-                             '50%': { transform: 'scale(1.08)', filter: 'drop-shadow(0 0 25px rgba(255,45,85,0.9))' }
+                         kilauMerah: {
+                             '0%, 100%': { textShadow: '0 0 8px #FF2244, 0 0 16px #FF2244, 0 0 30px #FF224480' },
+                             '50%': { textShadow: '0 0 12px #FF4466, 0 0 24px #FF4466, 0 0 45px #FF446690' }
                          },
-                         kilau: {
-                             '0%, 100%': { textShadow: '0 0 8px rgba(255,255,255,0.6)' },
-                             '50%': { textShadow: '0 0 18px rgba(255,255,255,1), 0 0 30px rgba(191,219,254,0.8)' }
+                         turunData: {
+                             '0%': { transform: 'translateY(-100vh)', opacity: 0 },
+                             '20%': { opacity: 1 },
+                             '100%': { transform: 'translateY(100vh)', opacity: 0 }
                          },
-                         'jatuh-love': {
-                             '0%': { transform: 'translateY(-100%)', opacity: 0 },
-                             '20%': { opacity: 0.7 },
-                             '100%': { transform: 'translateY(100%)', opacity: 0 }
+                         pantulan: {
+                             '0%, 100%': { transform: 'translateY(0) scale(1)' },
+                             '50%': { transform: 'translateY(5px) scale(1.01)' }
                          },
-                         kelap: {
-                             '0%, 100%': { opacity: 0.4 },
-                             '50%': { opacity: 1 }
+                         jatuhBintang: {
+                             '0%': { transform: 'translateY(-50px) translateX(0)', opacity: 0 },
+                             '50%': { opacity: 1 },
+                             '100%': { transform: 'translateY(100vh) translateX(-20px)', opacity: 0 }
                          }
                      }
                  }
@@ -52,83 +52,108 @@
          }
      </script>
      <style type="text/tailwindcss">
-         .rain {
-             width: 1.5px;
-             height: 70px;
+         .data-rain {
              position: absolute;
-             background: linear-gradient(to bottom, transparent, rgba(220, 230, 255, 0.7));
-             animation: hujanTurun 2s linear infinite;
+             color: #FF2244;
+             font-family: monospace;
+             font-size: 14px;
+             line-height: 1.2;
+             opacity: 0.8;
+             animation: turunData 4s linear infinite;
          }
-         @keyframes hujanTurun {
-             0% { transform: translateY(-80px); }
-             100% { transform: translateY(100vh); }
+         .love-3d {
+             text-shadow: 
+                 0 0 5px #fff,
+                 0 0 15px #FF2244,
+                 0 0 30px #FF2244,
+                 0 0 60px #FF224480;
+             -webkit-text-stroke: 1px #FF8899;
+         }
+         .reflection {
+             transform: scaleY(-1);
+             opacity: 0.3;
+             filter: blur(2px);
          }
      </style>
  </head>
- <body class="font-lexend bg-gradient-to-br from-malam to-senja min-h-screen overflow-hidden relative">
-     <!-- Kesan Hujan Bergerak -->
-     <div id="latarHujan" class="absolute inset-0 z-0"></div>
-     <!-- Bangunan Berlampu Berkelip -->
-     <div class="absolute bottom-0 left-0 w-1/3 h-44 z-10">
-         <div class="w-full h-full bg-[#101426] clip-path-polygon"></div>
-         <div class="absolute inset-0">
-             <div class="w-1.5 h-2.5 bg-yellow-200 absolute top-12 left-8 animate-kelap"></div>
-             <div class="w-1.5 h-2.5 bg-blue-200 absolute top-20 left-16 animate-kelap delay-200"></div>
-             <div class="w-1.5 h-2.5 bg-pink-200 absolute top-10 left-26 animate-kelap delay-500"></div>
-             <div class="w-1.5 h-2.5 bg-white absolute top-18 left-36 animate-kelap delay-700"></div>
-         </div>
+ <body class="font-lexend bg-black min-h-screen overflow-hidden relative">
+     <!-- Kesan titisan bintang/meteor -->
+     <div id="bintang" class="absolute inset-0 z-0"></div>
+     <!-- Bentuk Hati dari rentetan aksara -->
+     <div id="hatiData" class="absolute inset-0 z-10"></div>
+     <!-- Bangunan Bandar Berlampu -->
+     <div class="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-biruMalam/80 to-transparent z-20">
+         <div class="w-full h-full opacity-70" style="background: url('https://picsum.photos/id/1042/1600/400') center bottom / cover no-repeat;"></div>
+         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
      </div>
      <!-- Kandungan Utama -->
-     <div class="relative z-20 min-h-screen flex flex-col items-center justify-center px-5 text-center">
-         <!-- Nama Intan Nadia (Bergerak Berkilau) -->
-         <h1 class="text-[clamp(2.8rem,7vw,4.5rem)] font-bold text-white animate-kilau mb-6">
-             Intan Nadia
-         </h1>
-         <!-- Hati Besar 3D Berdenyut -->
-         <div class="relative w-52 h-52 md:w-60 md:h-60 animate-denyut mb-8">
-             <svg viewBox="0 0 100 90" class="w-full h-full fill-merahHati stroke-merahGelap stroke-[1.5]">
-                 <path d="M50,20 C30,0 0,15 0,45 C0,75 50,90 50,90 C50,90 100,75 100,45 C100,15 70,0 50,20 Z"/>
-             </svg>
-             <!-- Perkataan "love" Kecil Jatuh Bergerak Dalam Hati -->
-             <div id="kandunganHati" class="absolute inset-0 overflow-hidden"></div>
-         </div>
+     <div class="relative z-30 min-h-screen flex flex-col items-center justify-center px-4">
          <!-- Teks Sebelah Kiri -->
-         <div class="w-full max-w-md text-left mb-6">
-             <p class="text-white text-sm md:text-base leading-relaxed animate-kilau">
-                 Even ayang macam tak ambil kisah pasal baby tapi ayang selalu jaga care baby dari jauh
+         <div class="absolute left-6 md:left-12 top-1/3 text-left">
+             <p class="text-merahNeon text-sm md:text-lg leading-relaxed animate-kilauMerah">
+                 Even ayang<br>
+                 macam nampak<br>
+                 tak kisah<br>
+                 pasal baby<br>
+                 tapi ayang<br>
+                 selalu amik tahu<br>
+                 hari ii baby
              </p>
+             <div class="text-merahNeon text-2xl mt-2 animate-kilauMerah">♡</div>
          </div>
          <!-- Teks Sebelah Kanan -->
-         <div class="w-full max-w-md text-right">
-             <p class="text-white text-sm md:text-base leading-relaxed animate-kilau">
-                 I love you baby, sorry for everything, ayang support baby dari jauh tau
+         <div class="absolute right-6 md:right-12 top-1/3 text-right">
+             <p class="text-merahNeon text-sm md:text-lg leading-relaxed animate-kilauMerah">
+                 I Love You Baby<br>
+                 Sorry for<br>
+                 everything<br>
+                 Ayang support<br>
+                 baby okeyy
              </p>
+             <div class="text-merahNeon text-2xl mt-2 animate-kilauMerah">♡</div>
+         </div>
+         <!-- Teks LOVE 3D Besar -->
+         <div class="relative mt-20 md:mt-10 animate-pantulan">
+             <h1 class="text-[clamp(4rem,12vw,7rem)] font-black text-transparent love-3d tracking-wider">
+                 LOVE
+             </h1>
+             <!-- Pantulan di air -->
+             <div class="reflection absolute w-full bottom-[-60%] left-0">
+                 <h1 class="text-[clamp(4rem,12vw,7rem)] font-black text-transparent love-3d tracking-wider opacity-20">
+                     LOVE
+                 </h1>
+             </div>
+         </div>
+         <!-- Tapak bawah -->
+         <div class="w-80 md:w-96 h-4 rounded-full bg-merahNeon/30 shadow-[0_0_30px_#FF2244] mt-12 relative">
+             <div class="absolute inset-0 rounded-full bg-merahNeon/50"></div>
+             <p class="text-merahNeon text-lg mt-6 animate-kilauMerah">♡ Goodluck Sem 2 ♡</p>
          </div>
      </div>
      <script>
-         // Buat titisan hujan bergerak
-         const kawasanHujan = document.getElementById('latarHujan');
-         for (let i = 0; i < 150; i++) {
-             let titisan = document.createElement('div');
-             titisan.classList.add('rain');
-             titisan.style.left = `${Math.random() * 100}%`;
-             titisan.style.animationDelay = `${Math.random() * 2.5}s`;
-             titisan.style.height = `${Math.random() * 50 + 50}px`;
-             kawasanHujan.appendChild(titisan);
+         // Buat kesan titisan bintang jatuh
+         const bintang = document.getElementById('bintang');
+         for (let i = 0; i < 30; i++) {
+             let titik = document.createElement('div');
+             titik.style.position = 'absolute';
+             titik.style.width = '2px';
+             titik.style.height = '60px';
+             titik.style.background = 'linear-gradient(to bottom, transparent, #FFDDDD)';
+             titik.style.left = `${Math.random() * 100}%`;
+             titik.style.animation = `jatuhBintang ${Math.random() * 2 + 2}s linear infinite`;
+             bintang.appendChild(titik);
          }
-         // Buat perkataan "love" jatuh dalam hati
-         const dalamHati = document.getElementById('kandunganHati');
-         function buatLoveJatuh() {
-             let teksLove = document.createElement('span');
-             teksLove.innerText = 'love';
-             teksLove.className = 'absolute text-xs md:text-sm text-white/80 font-light animate-jatuh';
-             teksLove.style.left = `${Math.random() * 90}%`;
-             teksLove.style.animationDuration = `${Math.random() * 2 + 3}s`;
-             dalamHati.appendChild(teksLove);
-             // Buang selepas habis animasi
-             setTimeout(() => teksLove.remove(), 5000);
+         // Buat bentuk hati dari rentetan aksara
+         const hatiData = document.getElementById('hatiData');
+         const aksara = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ♡";
+         for (let i = 0; i < 120; i++) {
+             let rentetan = document.createElement('div');
+             rentetan.className = 'data-rain';
+             rentetan.innerText = Array.from({length: 15}, () => aksara[Math.floor(Math.random() * aksara.length)]).join('');
+             rentetan.style.left = `${35 + Math.sin(i * 0.12) * 25}%`;
+             rentetan.style.animationDelay = `${Math.random() * 3}s`;
+             hatiData.appendChild(rentetan);
          }
-         setInterval(buatLoveJatuh, 300);
      </script>
  </body>
  </html>
