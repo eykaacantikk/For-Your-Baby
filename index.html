@@ -3,234 +3,260 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Baby 💎</title>
+<title>LOVE - Intan Nadia</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;800&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: #000;
+    margin: 0;
     overflow: hidden;
-    font-family: 'Segoe UI', sans-serif;
-    color: #fff;
-    perspective: 1000px;
+    background: #000;
+    font-family: 'Lexend', sans-serif;
   }
 
-  /* 1. Latar Belakang Bandar Neon */
- .city {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 30vh;
-    background:
-      linear-gradient(to top, #000 0%, transparent 100%),
-      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200"><rect fill="%23111" width="1000" height="200"/><rect x="50" y="80" width="30" height="120" fill="%23222"/><rect x="100" y="50" width="40" height="150" fill="%23222"/><rect x="160" y="100" width="25" height="100" fill="%23222"/><rect x="200" y="60" width="35" height="140" fill="%23222"/><rect x="250" y="90" width="30" height="110" fill="%23222"/><rect x="300" y="40" width="50" height="160" fill="%23222"/><rect x="370" y="70" width="30" height="130" fill="%23222"/><rect x="420" y="90" width="40" height="110" fill="%23222"/><rect x="480" y="60" width="35" height="140" fill="%23222"/><rect x="530" y="80" width="30" height="120" fill="%23222"/><rect x="580" y="50" width="45" height="150" fill="%23222"/><rect x="640" y="100" width="30" height="100" fill="%23222"/><rect x="690" y="70" width="40" height="130" fill="%23222"/><rect x="750" y="60" width="35" height="140" fill="%23222"/><rect x="800" y="90" width="30" height="110" fill="%23222"/><rect x="850" y="40" width="50" height="160" fill="%23222"/><rect x="920" y="80" width="30" height="120" fill="%23222"/></svg>');
-    background-size: cover;
-    z-index: 1;
-  }
- .city::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: repeating-linear-gradient(
-      transparent, transparent 19px,
-      rgba(255, 0, 100,.2) 20px
-    );
-    animation: cityGlow 2s infinite alternate;
-  }
-  @keyframes cityGlow { from {opacity:.3} to {opacity:.8} }
-
-  /* 2. Refleksi Air */
- .water {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 30vh;
-    background: linear-gradient(to bottom, transparent 0%, rgba(0,50,100,.3) 100%);
-    transform: scaleY(-1);
-    opacity: 0.4;
-    filter: blur(2px);
-    z-index: 2;
-  }
-
-  /* 3. Canvas Matrix Hujan Kod */
-  canvas#matrix {
+  canvas {
     position: absolute;
     top: 0; left: 0;
+    z-index: 1;
+  }
+
+  /* Bandar + Air */
+.city {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40vh;
+    background: url('https://picsum.photos/id/1042/1920/600') center bottom/cover no-repeat;
+    filter: brightness(0.4) saturate(1.5);
+    z-index: 2;
+  }
+.city::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 50%);
+  }
+.water {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40vh;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.8) 100%);
+    transform: scaleY(-1);
+    opacity: 0.5;
+    filter: blur(3px) brightness(0.8);
     z-index: 3;
   }
 
-  /* 4. Teks LOVE 3D Kaca Neon Tengah */
- .love-3d {
+  /* Pentas LOVE 3D */
+.stage {
     position: absolute;
-    top: 50%;
+    bottom: 12vh;
     left: 50%;
-    transform: translate(-50%, -50%) rotateX(15deg);
-    font-size: 15vw;
-    font-weight: 900;
+    transform: translateX(-50%);
+    width: 70vw;
+    max-width: 600px;
+    height: 60px;
+    background: radial-gradient(ellipse at center, rgba(255,34,68,0.4) 0%, rgba(0,0,0,0) 70%);
+    border: 2px solid #FF2244;
+    border-radius: 50%;
+    box-shadow: 0 0 40px #FF2244, inset 0 0 20px #FF2244;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+.love-3d {
+    font-size: clamp(3rem, 12vw, 8rem);
+    font-weight: 800;
     color: transparent;
+    letter-spacing: 0.1em;
+    transform-style: preserve-3d;
+    transform: perspective(500px) rotateX(10deg);
     text-shadow:
-      0 0 10px #ff00ff,
-      0 0 20px #ff00ff,
-      0 0 40px #00ffff,
-      0 0 80px #ff00ff,
-      0 0 120px #00ffff;
-    animation: neonPulse 2s infinite alternate, float 4s ease-in-out infinite;
+      0 0 5px #fff,
+      0 0 20px #FF2244,
+      0 0 40px #FF2244,
+      0 0 80px #FF224480;
+    -webkit-text-stroke: 2px #FF8899;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: perspective(500px) rotateX(10deg) translateY(0); }
+    50% { transform: perspective(500px) rotateX(5deg) translateY(-10px); }
+  }
+
+  /* Teks Kiri Kanan */
+.text-neon {
+    position: absolute;
+    top: 30%;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(14px, 2vw, 22px);
+    color: #FF4466;
+    text-shadow: 0 0 10px #FF2244, 0 0 20px #FF2244;
+    line-height: 1.8;
     z-index: 10;
-    background: linear-gradient(45deg, rgba(255,0,255,.2), rgba(0,255,255,.2));
-    -webkit-background-clip: text;
-    border: 2px solid rgba(0,255,255,.5);
-    padding: 0 5vw;
-    border-radius: 20px;
-    backdrop-filter: blur(5px);
+    animation: kilau 2s infinite alternate;
   }
-  @keyframes neonPulse {
-    from { text-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff; }
-    to { text-shadow: 0 0 40px #ff00ff, 0 0 80px #00ffff, 0 0 120px #ff00ff; }
-  }
-  @keyframes float { 0%,100%{transform: translate(-50%, -52%) rotateX(15deg)} 50%{transform: translate(-50%, -48%) rotateX(10deg)} }
-
-  /* 5. Meteor */
- .meteor {
-    position: absolute;
-    width: 2px;
-    height: 100px;
-    background: linear-gradient(transparent, #fff, #00ffff);
-    animation: meteorFall 3s linear infinite;
-    opacity: 0;
-    z-index: 4;
-  }
-  @keyframes meteorFall {
-    0% { transform: translateY(-200px) translateX(0) rotate(45deg); opacity: 0; }
-    10% { opacity: 1; }
-    100% { transform: translateY(100vh) translateX(200px) rotate(45deg); opacity: 0; }
+.left { left: 5%; text-align: left; }
+.right { right: 5%; text-align: right; }
+  @keyframes kilau {
+    from { text-shadow: 0 0 5px #FF2244, 0 0 10px #FF2244; }
+    to { text-shadow: 0 0 15px #FF4466, 0 0 30px #FF4466; }
   }
 
-  /* 6. Teks Kiri Kanan */
- .text-box {
+  /* Goodluck Sem 2 */
+.goodluck {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 25%;
-    font-size: 1.1vw;
-    line-height: 1.6;
-    text-shadow: 0 0 10px #ff00ff;
-    z-index: 10;
-    animation: fadeIn 3s;
-  }
- .left-text { left: 5%; text-align: left; color: #ffccff; }
- .right-text { right: 5%; text-align: right; color: #ccffff; }
-
-  /* 7. Goodluck Sem 2 Bawah */
- .goodluck {
-    position: absolute;
-    bottom: 5%;
-    width: 100%;
-    text-align: center;
-    font-size: 3vw;
-    font-weight: bold;
-    color: #ff3366;
-    text-shadow: 0 0 20px #ff3366, 0 0 40px #ff6699;
-    animation: heartbeat 1.5s infinite;
-    z-index: 10;
-  }
-  @keyframes heartbeat { 0%,100%{transform: scale(1)} 50%{transform: scale(1.1)} }
-  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
-
-  /* Hati Besar Neon 3D belakang LOVE */
- .heart-bg {
-    position: absolute;
-    top: 50%;
+    bottom: 14vh;
     left: 50%;
-    transform: translate(-50%, -50%) scale(3);
-    font-size: 10vw;
-    color: #ff0033;
-    filter: blur(30px);
-    opacity: 0.5;
-    animation: pulse 2s infinite;
-    z-index: 5;
+    transform: translateX(-50%);
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(16px, 2.5vw, 24px);
+    color: #FF4466;
+    text-shadow: 0 0 10px #FF2244;
+    z-index: 11;
+    white-space: nowrap;
   }
-  @keyframes pulse { 0%,100%{transform: translate(-50%, -50%) scale(3)} 50%{transform: translate(-50%, -50%) scale(3.2)} }
+
+  /* Dola AI */
+.watermark {
+    position: absolute;
+    bottom: 2%;
+    right: 3%;
+    font-weight: 800;
+    font-size: 14px;
+    color: #fff;
+    z-index: 10;
+  }
 
 </style>
 </head>
 <body>
 
-  <div class="heart-bg">❤️</div>
-  <div class="love-3d">LOVE</div>
-  <div class="city"></div>
-  <div class="water"></div>
-  <canvas id="matrix"></canvas>
+<canvas id="matrix"></canvas>
+<div class="city"></div>
+<div class="water"></div>
 
-  <div class="text-box left-text">
-    even ayang macam tak amik kisah pasal baby<br>
-    tapi ayang selalu support baby diam ii tau 💕
-  </div>
+<div class="text-neon left">
+  Even ayang<br>
+  maca nampak<br>
+  tak kisah<br>
+  pasal baby<br>
+  tapi ayang<br>
+  selalu amik tahu<br>
+  hari ii baby ♡
+</div>
 
-  <div class="text-box right-text">
-    sorry for everythings baby 🥺<br>
-    i love babyy,<br>
-    goodluckk muahh 😘
-  </div>
+<div class="text-neon right">
+  I Love You Baby<br>
+  Sorry for<br>
+  everything<br>
+  Ayang support<br>
+  baby okeyy ♡
+</div>
 
-  <div class="goodluck">❤️ Goodluck Sem 2 ❤️</div>
+<div class="stage">
+  <h1 class="love-3d">LOVE</h1>
+</div>
+<div class="goodluck">♡ Goodluck Sem 2 ♡</div>
+<div class="watermark">Dola AI</div>
 
 <script>
-  // Matrix Hujan Kod Bentuk Hati
-  const canvas = document.getElementById('matrix');
-  const ctx = canvas.getContext('2d');
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const fontSize = 14;
+const columns = Math.floor(canvas.width / fontSize);
+const drops = Array(columns).fill(0);
+
+// Karakter Matrix Merah
+const chars = "01INTINADIA♥23456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+// Function persamaan hati
+function isInHeart(x, y) {
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2.2;
+  const scale = Math.min(canvas.width, canvas.height) / 600; // Saiz hati
+
+  x = (x - cx) / (200 * scale);
+  y = (y - cy) / (200 * scale);
+
+  // Persamaan hati matematik
+  const a = Math.pow(x*x + y*y - 1, 3) - x*x*y;
+  return a <= 0 && y > -1.5;
+}
+
+// Meteor
+let meteors = [];
+function createMeteor() {
+  meteors.push({
+    x: Math.random() * canvas.width,
+    y: -100,
+    len: Math.random() * 80 + 50,
+    speed: Math.random() * 15 + 10,
+    alpha: 1
+  });
+}
+
+function draw() {
+  // Fade background
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.font = fontSize + 'px monospace';
+
+  // Lukis Hujan Matrix ikut bentuk hati
+  for(let i = 0; i < drops.length; i++) {
+    const x = i * fontSize;
+    const y = drops[i] * fontSize;
+
+    if(isInHeart(x, y)) {
+      // Glow merah untuk hati
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = '#FF2244';
+      ctx.fillStyle = `hsl(${Math.random()*20}, 100%, ${Math.random()*30 + 60}%)`;
+      const char = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(char, x, y);
+      ctx.shadowBlur = 0;
+    } else {
+      // Hujan putih luar hati
+      ctx.fillStyle = 'rgba(255,255,255,0.1)';
+      ctx.fillText('0', x, y);
+    }
+
+    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+
+  // Lukis Meteor
+  if(Math.random() < 0.1) createMeteor();
+  ctx.strokeStyle = '#FFDDDD';
+  ctx.lineWidth = 2;
+  meteors.forEach((m, i) => {
+    ctx.globalAlpha = m.alpha;
+    ctx.beginPath();
+    ctx.moveTo(m.x, m.y);
+    ctx.lineTo(m.x - m.len/3, m.y + m.len);
+    ctx.stroke();
+    m.y += m.speed;
+    m.alpha -= 0.02;
+    if(m.alpha <= 0) meteors.splice(i, 1);
+  });
+  ctx.globalAlpha = 1;
+}
+
+setInterval(draw, 40);
+
+window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-
-  const chars = "LOVE BABY 01❤️";
-  const fontSize = 16;
-  const columns = canvas.width / fontSize;
-  const drops = Array(Math.floor(columns)).fill(1);
-
-  // Function check kalau dalam bentuk hati
-  function isInHeart(x, y) {
-    x = (x - canvas.width/2) / (canvas.width/4);
-    y = (y - canvas.height/2) / (canvas.height/4);
-    return Math.pow(x*x + y*y - 1, 3) - x*x*y <= 0;
-  }
-
-  function draw() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = '#0F0';
-    ctx.font = fontSize + 'px monospace';
-
-    for(let i = 0; i < drops.length; i++) {
-      const x = i * fontSize;
-      const y = drops[i] * fontSize;
-
-      // Hanya drop kalau dalam bentuk hati
-      if(isInHeart(x, y)) {
-        ctx.fillStyle = `hsl(${Math.random()*60 + 300}, 100%, 50%)`; // Pink-Cyan
-        ctx.fillText(chars[Math.floor(Math.random() * chars.length)], x, y);
-      }
-
-      if(y > canvas.height && Math.random() > 0.975) drops[i] = 0;
-      drops[i]++;
-    }
-  }
-  setInterval(draw, 33);
-
-  // Generate Meteor
-  function createMeteor() {
-    const meteor = document.createElement('div');
-    meteor.className = 'meteor';
-    meteor.style.left = Math.random() * 100 + 'vw';
-    meteor.style.animationDelay = Math.random() * 2 + 's';
-    document.body.appendChild(meteor);
-    setTimeout(() => meteor.remove(), 3000);
-  }
-  setInterval(createMeteor, 800);
-
-  // Resize
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
+});
 </script>
 </body>
 </html>
