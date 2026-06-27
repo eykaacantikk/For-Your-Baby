@@ -1,262 +1,160 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LOVE - Intan Nadia</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;800&family=Great+Vibes&display=swap" rel="stylesheet">
+<title>For My Baby 💜</title>
+
 <style>
-  body {
-    margin: 0;
-    overflow: hidden;
-    background: #000;
-    font-family: 'Lexend', sans-serif;
-  }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-  canvas {
-    position: absolute;
-    top: 0; left: 0;
-    z-index: 1;
-  }
+body{
+    background:radial-gradient(circle,#13001f,#000);
+    overflow:hidden;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    perspective:1200px;
+    font-family:Arial,sans-serif;
+}
 
-  /* Bandar + Air */
-.city {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 40vh;
-    background: url('https://picsum.photos/id/1042/1920/600') center bottom/cover no-repeat;
-    filter: brightness(0.4) saturate(1.5);
-    z-index: 2;
-  }
-.city::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 50%);
-  }
-.water {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 40vh;
-    background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.8) 100%);
-    transform: scaleY(-1);
-    opacity: 0.5;
-    filter: blur(3px) brightness(0.8);
-    z-index: 3;
-  }
+.scene{
+    position:relative;
+    transform-style:preserve-3d;
+    animation:rotate 12s linear infinite;
+}
 
-  /* Pentas LOVE 3D */
-.stage {
-    position: absolute;
-    bottom: 12vh;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70vw;
-    max-width: 600px;
-    height: 60px;
-    background: radial-gradient(ellipse at center, rgba(255,34,68,0.4) 0%, rgba(0,0,0,0) 70%);
-    border: 2px solid #FF2244;
-    border-radius: 50%;
-    box-shadow: 0 0 40px #FF2244, inset 0 0 20px #FF2244;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-.love-3d {
-    font-size: clamp(3rem, 12vw, 8rem);
-    font-weight: 800;
-    color: transparent;
-    letter-spacing: 0.1em;
-    transform-style: preserve-3d;
-    transform: perspective(500px) rotateX(10deg);
-    text-shadow:
-      0 0 5px #fff,
-      0 0 20px #FF2244,
-      0 0 40px #FF2244,
-      0 0 80px #FF224480;
-    -webkit-text-stroke: 2px #FF8899;
-    animation: float 3s ease-in-out infinite;
-  }
-  @keyframes float {
-    0%,100% { transform: perspective(500px) rotateX(10deg) translateY(0); }
-    50% { transform: perspective(500px) rotateX(5deg) translateY(-10px); }
-  }
+@keyframes rotate{
+    from{transform:rotateY(0deg);}
+    to{transform:rotateY(360deg);}
+}
 
-  /* Teks Kiri Kanan */
-.text-neon {
-    position: absolute;
-    top: 30%;
-    font-family: 'Great Vibes', cursive;
-    font-size: clamp(14px, 2vw, 22px);
-    color: #FF4466;
-    text-shadow: 0 0 10px #FF2244, 0 0 20px #FF2244;
-    line-height: 1.8;
-    z-index: 10;
-    animation: kilau 2s infinite alternate;
-  }
-.left { left: 5%; text-align: left; }
-.right { right: 5%; text-align: right; }
-  @keyframes kilau {
-    from { text-shadow: 0 0 5px #FF2244, 0 0 10px #FF2244; }
-    to { text-shadow: 0 0 15px #FF4466, 0 0 30px #FF4466; }
-  }
+.heart{
+    position:relative;
+    width:180px;
+    height:180px;
+    transform:rotate(-45deg);
+    background:#b300ff;
+    box-shadow:
+    0 0 30px #c84cff,
+    0 0 60px #c84cff,
+    0 0 100px #b300ff;
+    animation:beat 1s infinite;
+}
 
-  /* Goodluck Sem 2 */
-.goodluck {
-    position: absolute;
-    bottom: 14vh;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Great Vibes', cursive;
-    font-size: clamp(16px, 2.5vw, 24px);
-    color: #FF4466;
-    text-shadow: 0 0 10px #FF2244;
-    z-index: 11;
-    white-space: nowrap;
-  }
+.heart:before,
+.heart:after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:#b300ff;
+}
 
-  /* Dola AI */
-.watermark {
-    position: absolute;
-    bottom: 2%;
-    right: 3%;
-    font-weight: 800;
-    font-size: 14px;
-    color: #fff;
-    z-index: 10;
-  }
+.heart:before{
+    top:-90px;
+    left:0;
+}
 
+.heart:after{
+    left:90px;
+    top:0;
+}
+
+@keyframes beat{
+    0%,100%{
+        transform:rotate(-45deg) scale(1);
+    }
+    50%{
+        transform:rotate(-45deg) scale(1.15);
+    }
+}
+
+.text{
+    position:absolute;
+    width:90%;
+    text-align:center;
+    color:white;
+    text-shadow:0 0 10px #d86fff,0 0 20px #d86fff;
+    font-size:22px;
+    line-height:1.8;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #b300ff;
+    }
+    to{
+        text-shadow:0 0 30px #ff66ff;
+    }
+}
+
+.floating{
+    position:absolute;
+    color:#d86fff;
+    font-size:22px;
+    animation:fly linear infinite;
+}
+
+@keyframes fly{
+    from{
+        transform:translateY(100vh) scale(0.5);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120vh) scale(1.5);
+        opacity:0;
+    }
+}
 </style>
 </head>
+
 <body>
 
-<canvas id="matrix"></canvas>
-<div class="city"></div>
-<div class="water"></div>
-
-<div class="text-neon left">
-  Even ayang<br>
-  maca nampak<br>
-  tak kisah<br>
-  pasal baby<br>
-  tapi ayang<br>
-  selalu amik tahu<br>
-  hari ii baby ♡
+<div class="scene">
+    <div class="heart"></div>
 </div>
 
-<div class="text-neon right">
-  I Love You Baby<br>
-  Sorry for<br>
-  everything<br>
-  Ayang support<br>
-  baby okeyy ♡
-</div>
+<div class="text">
+💜 Goodluck Exam STPM Sem 2 💜<br><br>
 
-<div class="stage">
-  <h1 class="love-3d">LOVE</h1>
+Ayang selalu support baby.<br>
+
+Baby nampak ja ayang tak care pasal baby,<br>
+tapi ayang selalu perati baby dari jauh. 🤍<br><br>
+
+I LOVE YOU SO MUCHHHH 💜
 </div>
-<div class="goodluck">♡ Goodluck Sem 2 ♡</div>
-<div class="watermark">Dola AI</div>
 
 <script>
-const canvas = document.getElementById('matrix');
-const ctx = canvas.getContext('2d');
+function createHeart(){
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+const heart=document.createElement("div");
 
-const fontSize = 14;
-const columns = Math.floor(canvas.width / fontSize);
-const drops = Array(columns).fill(0);
+heart.className="floating";
+heart.innerHTML="💜";
 
-// Karakter Matrix Merah
-const chars = "01INTINADIA♥23456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*4+4)+"s";
+heart.style.fontSize=(Math.random()*25+15)+"px";
 
-// Function persamaan hati
-function isInHeart(x, y) {
-  const cx = canvas.width / 2;
-  const cy = canvas.height / 2.2;
-  const scale = Math.min(canvas.width, canvas.height) / 600; // Saiz hati
+document.body.appendChild(heart);
 
-  x = (x - cx) / (200 * scale);
-  y = (y - cy) / (200 * scale);
+setTimeout(()=>{
+heart.remove();
+},8000);
 
-  // Persamaan hati matematik
-  const a = Math.pow(x*x + y*y - 1, 3) - x*x*y;
-  return a <= 0 && y > -1.5;
 }
 
-// Meteor
-let meteors = [];
-function createMeteor() {
-  meteors.push({
-    x: Math.random() * canvas.width,
-    y: -100,
-    len: Math.random() * 80 + 50,
-    speed: Math.random() * 15 + 10,
-    alpha: 1
-  });
-}
-
-function draw() {
-  // Fade background
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  ctx.font = fontSize + 'px monospace';
-
-  // Lukis Hujan Matrix ikut bentuk hati
-  for(let i = 0; i < drops.length; i++) {
-    const x = i * fontSize;
-    const y = drops[i] * fontSize;
-
-    if(isInHeart(x, y)) {
-      // Glow merah untuk hati
-      ctx.shadowBlur = 10;
-      ctx.shadowColor = '#FF2244';
-      ctx.fillStyle = `hsl(${Math.random()*20}, 100%, ${Math.random()*30 + 60}%)`;
-      const char = chars[Math.floor(Math.random() * chars.length)];
-      ctx.fillText(char, x, y);
-      ctx.shadowBlur = 0;
-    } else {
-      // Hujan putih luar hati
-      ctx.fillStyle = 'rgba(255,255,255,0.1)';
-      ctx.fillText('0', x, y);
-    }
-
-    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-      drops[i] = 0;
-    }
-    drops[i]++;
-  }
-
-  // Lukis Meteor
-  if(Math.random() < 0.1) createMeteor();
-  ctx.strokeStyle = '#FFDDDD';
-  ctx.lineWidth = 2;
-  meteors.forEach((m, i) => {
-    ctx.globalAlpha = m.alpha;
-    ctx.beginPath();
-    ctx.moveTo(m.x, m.y);
-    ctx.lineTo(m.x - m.len/3, m.y + m.len);
-    ctx.stroke();
-    m.y += m.speed;
-    m.alpha -= 0.02;
-    if(m.alpha <= 0) meteors.splice(i, 1);
-  });
-  ctx.globalAlpha = 1;
-}
-
-setInterval(draw, 40);
-
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
+setInterval(createHeart,180);
 </script>
+
 </body>
 </html>
